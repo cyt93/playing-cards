@@ -17,6 +17,7 @@ This project is designed to handle and distribute 52 playing cards randomly amon
    cd playing-cards
 
 2. Run the following command in order to serve the project
+   ```sh
    php -S localhost:8000
 
 3. Open the project in your browser using a local server like Apache or PHP's built-in server
