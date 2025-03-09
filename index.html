@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Distributor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Enter Number of People</h2>
+    <input type="number" id="numPeople" min="1">
+    <button id="distributeBtn">Distribute Cards</button>
+    <h3>Result:</h3>
+    <div id="output"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#distributeBtn").click(function () {
+                let numPeople = $("#numPeople").val();
+                
+                if (!numPeople || numPeople <= 0) {
+                    alert("Input value does not exist or value is invalid");
+                    return;
+                }
+
+                $.get("distribute_cards.php", { n: numPeople }, function (data) {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        $("#output").html(data.join("<br>"));
+                    }
+                }, "json");
+            });
+        });
+    </script>
+</body>
+</html>
